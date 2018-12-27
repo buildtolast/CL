@@ -15,24 +15,16 @@ public abstract class BoardGame<P extends Player, C extends Config, T extends Bl
         this.board = board;
     }
 
-    public abstract Collection<P> playersByTurn();
-
-    public abstract void initialisePlayer(B board);
-
     public void play() {
         initialisePlayer(board);
         Collection<P> playersOrdered = playersByTurn();
-        boolean gameInProgress = true;
-        int turn = 1;
-        while (gameInProgress) {
-            for (Player player : playersOrdered) {
-                player.play(turn++);
-                if (player.isWinner()) {
-                    gameInProgress = false;
-                    break;
-                }
-            }
-        }
+        gamePlay(playersOrdered);
     }
+
+    public abstract void gamePlay(Collection<P> players);
+
+    public abstract void initialisePlayer(B board);
+
+    public abstract Collection<P> playersByTurn();
 
 }
