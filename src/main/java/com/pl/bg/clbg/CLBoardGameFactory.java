@@ -4,8 +4,6 @@ import com.pl.bg.BoardGameFactory;
 
 public class CLBoardGameFactory extends BoardGameFactory<CLConfig, CLBlock, CLBoard, CLBoardFactory, CLPlayer> {
 
-    CLPlayer[] clPlayers;
-
     public CLBoardGameFactory(CLBoardFactory boardFactory, int numberOfPlayers) {
         super(boardFactory, numberOfPlayers);
     }

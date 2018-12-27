@@ -1,9 +1,11 @@
 package com.pl.bg.clbg;
 
 import com.pl.bg.Player;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Random;
 
+@Slf4j
 public class CLPlayer extends Player {
 
     private Random random;
@@ -18,25 +20,24 @@ public class CLPlayer extends Player {
     @Override
     public void play() {
         int value = random.nextInt(6);
-        System.out.println("Player " + name + " <Turn> ** " + value);
-        if(!clBoard.isValid(currentPosition+value))
+        log.debug("Player " + name + " <Turn> ** " + value);
+        if (!clBoard.isValid(currentPosition + value))
             return;
 
         currentPosition += value;
-        System.out.println("Player " + name + " <Advanced To> ** " + currentPosition);
-        if(clBoard.isFinalBlock(currentPosition)) {
+        log.debug("Player " + name + " <Advanced To> ** " + currentPosition);
+        if (clBoard.isFinalBlock(currentPosition)) {
             this.winner = true;
-            System.out.println("Player " + name + " wins!!!");
-        }
-        else {
+            log.info("Player " + name + " wins!!!");
+        } else {
             Action action = clBoard.at(currentPosition);
-            if(!clBoard.isValid(action.advanceTo()))
+            if (!clBoard.isValid(action.advanceTo()))
                 throw new RuntimeException("Board Configuration Invalid, Terminating Game, Current Position : " + currentPosition + ", AdvanceTo : " + action.advanceTo());
 
             currentPosition = action.advanceTo();
-            if(clBoard.isFinalBlock(currentPosition)) {
+            if (clBoard.isFinalBlock(currentPosition)) {
                 this.winner = true;
-                System.out.println("Player " + name + " wins!!!");
+                log.info("Player " + name + " wins!!!");
             }
         }
     }

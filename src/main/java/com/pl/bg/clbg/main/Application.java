@@ -5,10 +5,12 @@ import com.pl.bg.BoardGameFactory;
 import com.pl.bg.clbg.CLBoardFactory;
 import com.pl.bg.clbg.CLBoardGameFactory;
 import com.pl.bg.clbg.CLConfig;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@Slf4j
 public class Application {
 
     public static void main(String[] args) {
@@ -20,9 +22,13 @@ public class Application {
 
         CLConfig clBoardConfig = CLConfig.build(20, basicBlocksConfig, chuteBlocksConfig, ladderBlocksConfig);
 
-        BoardGameFactory factory = new CLBoardGameFactory(new CLBoardFactory(clBoardConfig), 2);
-        BoardGame boardGame = factory.build();
-        boardGame.play();
+        for(int i = 1; i < 4; i++) {
+            log.info(" ----- Game " + i + " (Begins) ------- ");
+            BoardGameFactory factory = new CLBoardGameFactory(new CLBoardFactory(clBoardConfig), 4);
+            BoardGame boardGame = factory.build();
+            boardGame.play();
+            log.info(" ----- Game " + i + " (Ends) ------- ");
+        }
     }
 
 }
