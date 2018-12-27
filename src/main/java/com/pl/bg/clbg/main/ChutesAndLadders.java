@@ -24,11 +24,9 @@ public class ChutesAndLadders {
     }
 
     static void play(CLConfig config, int numPlayers, String[] names) {
-        log.info(" ----- Game Begins ------- ");
         BoardGameFactory factory = new CLBoardGameFactory(new CLBoardFactory(config), numPlayers, names);
         BoardGame boardGame = factory.build();
         boardGame.play();
-        log.info(" ----- Game Ends ------- ");
     }
 
 }
