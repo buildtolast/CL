@@ -18,17 +18,17 @@ public class CLPlayer extends Player {
     }
 
     @Override
-    public void play() {
-        int value = random.nextInt(6);
-        log.debug("Player " + name + " <Turn> ** " + value);
+    public void play(int turn) {
+        int value = nextValue();
+        int lastKnownPosition = currentPosition;
         if (!clBoard.isValid(currentPosition + value))
             return;
 
         currentPosition += value;
-        log.debug("Player " + name + " <Advanced To> ** " + currentPosition);
         if (clBoard.isFinalBlock(currentPosition)) {
+            log.debug("{}: {}: {} --> {} ", turn, name, lastKnownPosition, (lastKnownPosition + value));
             this.winner = true;
-            log.info("$$ Player " + name + " wins!!!");
+            log.info("The Winner is {}! ", name);
         } else {
             Action action = clBoard.at(currentPosition);
             if (!clBoard.isValid(action.advanceTo()))
@@ -36,13 +36,22 @@ public class CLPlayer extends Player {
 
             currentPosition = action.advanceTo();
             if(action.isChuteOrLadder())
-                log.debug(action.type() + " For Player " + name + " <Advanced To> ** " + currentPosition);
+                log.debug("{}: {}: {} --> {} --{}--> {}", turn, name, lastKnownPosition, (lastKnownPosition + value), action.type(), currentPosition);
+            else
+                log.debug("{}: {}: {} --> {} ", turn, name, lastKnownPosition, (lastKnownPosition + value));
 
             if (clBoard.isFinalBlock(currentPosition)) {
                 this.winner = true;
-                log.info("$$ Player " + name + " wins!!!");
+                log.info("The Winner is {}! ", name);
             }
         }
+    }
+
+    private int nextValue() {
+        int nextValue = random.nextInt(6);
+        while(nextValue == 0)
+            nextValue = random.nextInt(6);
+        return nextValue;
     }
 
 }

@@ -1,7 +1,6 @@
 package com.pl.bg;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 public abstract class BoardGame<P extends Player, C extends Config, T extends Block, B extends Board<C, T>> {
 
@@ -23,13 +22,15 @@ public abstract class BoardGame<P extends Player, C extends Config, T extends Bl
     public void play() {
         initialisePlayer(board);
         Collection<P> playersOrdered = playersByTurn();
-        while (!playersOrdered.isEmpty()) {
-            Iterator<P> currentPlayer = playersOrdered.iterator();
-            while (currentPlayer.hasNext()) {
-                Player player = currentPlayer.next();
-                player.play();
-                if (player.isWinner())
-                    currentPlayer.remove();
+        boolean gameInProgress = true;
+        int turn = 1;
+        while (gameInProgress) {
+            for (Player player : playersOrdered) {
+                player.play(turn++);
+                if (player.isWinner()) {
+                    gameInProgress = false;
+                    break;
+                }
             }
         }
     }

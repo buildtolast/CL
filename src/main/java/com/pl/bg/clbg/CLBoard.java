@@ -7,8 +7,8 @@ class CLBoard extends Board<CLConfig, CLBlock> {
     private Integer finalBlock;
 
     public CLBoard(CLConfig config) {
-        this.blocks = new CLBlock[config.getNumOfBlocks()];
-        config.getActions().forEach((a, b) -> blocks[a - 1] = new CLBlock(a - 1, b));
+        this.blocks = new CLBlock[config.getNumOfBlocks()+1];
+        config.getActions().forEach((a, b) -> blocks[a] = new CLBlock(a, b));
         this.finalBlock = config.getNumOfBlocks();
     }
 

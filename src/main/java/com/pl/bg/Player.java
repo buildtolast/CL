@@ -16,6 +16,6 @@ public abstract class Player {
         return this.winner;
     }
 
-    public abstract void play();
+    public abstract void play(int turn);
 
 }
