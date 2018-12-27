@@ -28,16 +28,19 @@ public class CLPlayer extends Player {
         log.debug("Player " + name + " <Advanced To> ** " + currentPosition);
         if (clBoard.isFinalBlock(currentPosition)) {
             this.winner = true;
-            log.info("Player " + name + " wins!!!");
+            log.info("$$ Player " + name + " wins!!!");
         } else {
             Action action = clBoard.at(currentPosition);
             if (!clBoard.isValid(action.advanceTo()))
                 throw new RuntimeException("Board Configuration Invalid, Terminating Game, Current Position : " + currentPosition + ", AdvanceTo : " + action.advanceTo());
 
             currentPosition = action.advanceTo();
+            if(action.isChuteOrLadder())
+                log.debug(action.type() + " For Player " + name + " <Advanced To> ** " + currentPosition);
+
             if (clBoard.isFinalBlock(currentPosition)) {
                 this.winner = true;
-                log.info("Player " + name + " wins!!!");
+                log.info("$$ Player " + name + " wins!!!");
             }
         }
     }

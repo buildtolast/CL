@@ -14,4 +14,11 @@ public class Action {
         return newPosition;
     }
 
+    boolean isChuteOrLadder(){
+        return actionType != ActionType.NOACTION;
+    }
+
+    public String type() {
+        return actionType.name();
+    }
 }
