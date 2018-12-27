@@ -2,22 +2,17 @@ package com.pl.bg.clbg;
 
 import com.pl.bg.Board;
 
-class CLBoard extends Board<CLBlock> {
+class CLBoard extends Board<CLConfig, CLBlock> {
 
-    private CLConfig config;
     private Integer finalBlock;
 
-    CLBoard(CLConfig config) {
-        this.config = config;
+    public CLBoard(CLConfig config) {
+        this.blocks = new CLBlock[config.getNumOfBlocks()];
+        config.getActions().forEach((a, b) -> blocks[a - 1] = new CLBlock(a - 1, b));
         this.finalBlock = config.getNumOfBlocks();
     }
 
-    void prepare() {
-        this.blocks = new CLBlock[config.getNumOfBlocks()];
-        this.config.getActions().forEach((a, b) -> blocks[a-1] = new CLBlock(a-1, b));
-    }
-
-    Action at(Integer position){
+    Action at(Integer position) {
         return blocks[position].getAction();
     }
 
@@ -25,7 +20,7 @@ class CLBoard extends Board<CLBlock> {
         return finalBlock.equals(blockPosition);
     }
 
-    boolean positionValid(Integer position){
+    boolean isValid(Integer position) {
         return finalBlock >= position;
     }
 

@@ -19,7 +19,7 @@ public class CLPlayer extends Player {
     public void play() {
         int value = random.nextInt(6);
         System.out.println("Player " + name + " <Turn> ** " + value);
-        if(!clBoard.positionValid(currentPosition+value))
+        if(!clBoard.isValid(currentPosition+value))
             return;
 
         currentPosition += value;
@@ -30,7 +30,7 @@ public class CLPlayer extends Player {
         }
         else {
             Action action = clBoard.at(currentPosition);
-            if(!clBoard.positionValid(action.advanceTo()))
+            if(!clBoard.isValid(action.advanceTo()))
                 throw new RuntimeException("Board Configuration Invalid, Terminating Game, Current Position : " + currentPosition + ", AdvanceTo : " + action.advanceTo());
 
             currentPosition = action.advanceTo();
