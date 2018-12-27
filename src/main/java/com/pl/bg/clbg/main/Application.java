@@ -24,7 +24,7 @@ public class Application {
 
         for(int i = 1; i < 4; i++) {
             log.info(" ----- Game " + i + " (Begins) ------- ");
-            BoardGameFactory factory = new CLBoardGameFactory(new CLBoardFactory(clBoardConfig), 4);
+            BoardGameFactory factory = new CLBoardGameFactory(new CLBoardFactory(clBoardConfig), 4, new String[]{"Alex", "Peter", "Joe", "Harry"});
             BoardGame boardGame = factory.build();
             boardGame.play();
             log.info(" ----- Game " + i + " (Ends) ------- ");

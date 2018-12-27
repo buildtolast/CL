@@ -9,8 +9,8 @@ import java.util.stream.IntStream;
 
 public class CLBoardGame extends BoardGame<CLPlayer, CLConfig, CLBlock, CLBoard> {
 
-    public CLBoardGame(CLBoard board, Integer numOfPlayers) {
-        super(board, numOfPlayers);
+    public CLBoardGame(CLBoard board, Integer numOfPlayers, String[] playerNames) {
+        super(board, numOfPlayers, playerNames);
         this.players = new CLPlayer[numOfPlayers];
     }
 
@@ -21,7 +21,7 @@ public class CLBoardGame extends BoardGame<CLPlayer, CLConfig, CLBlock, CLBoard>
 
     @Override
     public void initialisePlayer(CLBoard board) {
-        IntStream.range(0, this.numOfPlayers).forEach(p -> players[p] = new CLPlayer(String.valueOf(p), 0, board));
+        IntStream.range(0, this.numOfPlayers).forEach(p -> players[p] = new CLPlayer(playerNames[p], 0, board));
     }
 
 }
