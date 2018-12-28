@@ -1,10 +1,10 @@
 package com.pl.bg;
 
-public abstract class Config {
+public abstract class BoardConfig {
 
     private final Integer numOfBlocks;
 
-    protected Config(Integer numOfBlocks) {
+    protected BoardConfig(Integer numOfBlocks) {
         this.numOfBlocks = numOfBlocks;
     }
 

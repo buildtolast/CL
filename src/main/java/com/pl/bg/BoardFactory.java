@@ -1,6 +1,6 @@
 package com.pl.bg;
 
-public abstract class BoardFactory<C extends Config, T extends Block, B extends Board<C, T>> {
+public abstract class BoardFactory<C extends BoardConfig, T extends Block, B extends Board<C, T>> {
 
     protected C config;
 

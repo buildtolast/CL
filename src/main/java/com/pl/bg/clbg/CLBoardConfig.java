@@ -1,21 +1,21 @@
 package com.pl.bg.clbg;
 
-import com.pl.bg.Config;
+import com.pl.bg.BoardConfig;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-public class CLConfig extends Config {
+public class CLBoardConfig extends BoardConfig {
 
     private Map<Integer, Action> actions;
 
-    public static CLConfig build(Integer numOfBlocks, Integer[][] chuteBlocksConfig, Integer[][] ladderBlocksConfig) {
-        return new CLConfig(numOfBlocks, chuteBlocksConfig, ladderBlocksConfig);
+    public static CLBoardConfig build(Integer numOfBlocks, Integer[][] chuteBlocksConfig, Integer[][] ladderBlocksConfig) {
+        return new CLBoardConfig(numOfBlocks, chuteBlocksConfig, ladderBlocksConfig);
     }
 
-    private CLConfig(Integer numOfBlocks, Integer[][] chuteBlocksConfig, Integer[][] ladderBlocksConfig) {
+    private CLBoardConfig(Integer numOfBlocks, Integer[][] chuteBlocksConfig, Integer[][] ladderBlocksConfig) {
         super(numOfBlocks);
         this.actions = new HashMap<>();
         chuteBlocks(chuteBlocksConfig);

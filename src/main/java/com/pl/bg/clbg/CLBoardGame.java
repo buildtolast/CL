@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class CLBoardGame extends BoardGame<CLPlayer, CLConfig, CLBlock, CLBoard> {
+public class CLBoardGame extends BoardGame<CLPlayer, CLBoardConfig, CLBlock, CLBoard> {
 
     public CLBoardGame(CLBoard board, Integer numOfPlayers, String[] playerNames) {
         super(board, numOfPlayers, playerNames);

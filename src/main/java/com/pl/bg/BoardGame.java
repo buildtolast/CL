@@ -2,7 +2,7 @@ package com.pl.bg;
 
 import java.util.Collection;
 
-public abstract class BoardGame<P extends Player, C extends Config, T extends Block, B extends Board<C, T>> {
+public abstract class BoardGame<P extends Player, C extends BoardConfig, T extends Block, B extends Board<C, T>> {
 
     protected Integer numOfPlayers;
     protected String[] playerNames;

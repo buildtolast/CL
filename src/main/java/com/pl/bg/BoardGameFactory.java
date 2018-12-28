@@ -1,6 +1,6 @@
 package com.pl.bg;
 
-public abstract class BoardGameFactory<C extends Config,
+public abstract class BoardGameFactory<C extends BoardConfig,
                                        BL extends Block,
                                        B extends Board<C, BL>,
                                        BF extends BoardFactory<C, BL, B>,

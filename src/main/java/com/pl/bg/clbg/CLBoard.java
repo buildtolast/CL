@@ -2,11 +2,11 @@ package com.pl.bg.clbg;
 
 import com.pl.bg.Board;
 
-class CLBoard extends Board<CLConfig, CLBlock> {
+class CLBoard extends Board<CLBoardConfig, CLBlock> {
 
     private Integer finalBlock;
 
-    public CLBoard(CLConfig config) {
+    public CLBoard(CLBoardConfig config) {
         this.blocks = new CLBlock[config.getNumOfBlocks()+1];
         config.getActions().forEach((a, b) -> blocks[a] = new CLBlock(a, b));
         this.finalBlock = config.getNumOfBlocks();
