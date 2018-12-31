@@ -1,6 +1,6 @@
 package com.pl.bg;
 
-public abstract class BoardConfig {
+public class BoardConfig {
 
     private final Integer numOfBlocks;
 

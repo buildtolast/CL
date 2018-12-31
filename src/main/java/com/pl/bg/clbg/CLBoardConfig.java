@@ -11,11 +11,7 @@ public class CLBoardConfig extends BoardConfig {
 
     private Map<Integer, Action> actions;
 
-    public static CLBoardConfig build(Integer numOfBlocks, Integer[][] chuteBlocksConfig, Integer[][] ladderBlocksConfig) {
-        return new CLBoardConfig(numOfBlocks, chuteBlocksConfig, ladderBlocksConfig);
-    }
-
-    private CLBoardConfig(Integer numOfBlocks, Integer[][] chuteBlocksConfig, Integer[][] ladderBlocksConfig) {
+    CLBoardConfig(Integer numOfBlocks, Integer[][] chuteBlocksConfig, Integer[][] ladderBlocksConfig) {
         super(numOfBlocks);
         this.actions = new HashMap<>();
         chuteBlocks(chuteBlocksConfig);
