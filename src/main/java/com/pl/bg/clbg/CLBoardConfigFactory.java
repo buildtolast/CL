@@ -14,7 +14,7 @@ public class CLBoardConfigFactory extends BoardConfigFactory {
     }
 
     @Override
-    public CLBoardConfig build() {
+    public CLBoardConfig create() {
         return new CLBoardConfig(numOfBlocks, chuteBlocksConfig, ladderBlocksConfig);
     }
 

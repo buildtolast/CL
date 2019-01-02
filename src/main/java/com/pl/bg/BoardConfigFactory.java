@@ -8,7 +8,7 @@ public abstract class BoardConfigFactory {
         this.numOfBlocks = numOfBlocks;
     }
 
-    public BoardConfig build() {
+    public BoardConfig create() {
         return new BoardConfig(this.numOfBlocks);
     }
 

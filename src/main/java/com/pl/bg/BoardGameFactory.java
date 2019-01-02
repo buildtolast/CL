@@ -16,6 +16,6 @@ public abstract class BoardGameFactory<C extends BoardConfig,
         this.playerNames = playerNames;
     }
 
-    public abstract BoardGame<P, C, BL, B> build();
+    public abstract BoardGame<P, C, BL, B> create();
 
 }

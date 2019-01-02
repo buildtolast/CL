@@ -9,8 +9,8 @@ public class CLBoardGameFactory extends BoardGameFactory<CLBoardConfig, CLBlock,
     }
 
     @Override
-    public CLBoardGame build() {
-        return new CLBoardGame(boardFactory.build(), this.numberOfPlayers, this.playerNames);
+    public CLBoardGame create() {
+        return new CLBoardGame(boardFactory.create(), this.numberOfPlayers, this.playerNames);
     }
 
 }

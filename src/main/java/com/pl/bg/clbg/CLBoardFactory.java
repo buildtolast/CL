@@ -9,7 +9,7 @@ public class CLBoardFactory extends BoardFactory<CLBoardConfig, CLBlock, CLBoard
     }
 
     @Override
-    public CLBoard build() {
+    public CLBoard create() {
         return new CLBoard(config);
     }
 

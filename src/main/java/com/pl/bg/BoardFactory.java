@@ -8,6 +8,6 @@ public abstract class BoardFactory<C extends BoardConfig, T extends Block, B ext
         this.config = config;
     }
 
-    public abstract B build();
+    public abstract B create();
 
 }
