@@ -16,7 +16,12 @@ public class ChutesAndLadders {
 
     public static void main(String[] args) {
         SpringApplication.run(ChutesAndLadders.class, args);
+
+        log.info(" ------------------------------------- Game 1 ----------------------------------------------- ");
         play(boardConfig(), 2, new String[]{"Eric", "Paul"});
+
+        log.info(" ------------------------------------- Game 2 ----------------------------------------------- ");
+        play(boardConfig(), 3, new String[]{"Alex", "Eric", "Paul"});
     }
 
     static CLBoardConfig boardConfig() {
