@@ -8,9 +8,23 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Concrete implementation of Chute and Ladders board game with the intention of
+ * showcasing the game play.
+ *
+ * The class extends BoardGame and expects a concrete implementation of CLBoard,
+ * number of players and names of player @see initialisePlayer.
+ *
+ * Implements @see playerByTurn - to make a random selection of player
+ * who plays first.
+ *
+ * Implements @see gamePlay - define the Chutes and Ladders game play
+ *
+ * TODO Player Validations - limit the number of players and names
+ */
 public class CLBoardGame extends BoardGame<CLPlayer, CLBoardConfig, CLBlock, CLBoard> {
 
-    public CLBoardGame(CLBoard board, Integer numOfPlayers, String[] playerNames) {
+    CLBoardGame(CLBoard board, Integer numOfPlayers, String[] playerNames) {
         super(board, numOfPlayers, playerNames);
         this.players = new CLPlayer[numOfPlayers];
     }

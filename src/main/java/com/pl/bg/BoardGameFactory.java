@@ -3,19 +3,14 @@ package com.pl.bg;
 public abstract class BoardGameFactory<C extends BoardConfig,
                                        BL extends Block,
                                        B extends Board<C, BL>,
-                                       BF extends BoardFactory<C, BL, B>,
-                                       P extends Player> {
+                                       P extends Player,
+                                       BG extends BoardGame<P, C, BL, B>> {
 
-    protected final BF boardFactory;
-    protected final int numberOfPlayers;
-    protected final String[] playerNames;
+    public abstract C createBoardConfig();
 
-    public BoardGameFactory(BF boardFactory, int numberOfPlayers, String[] playerNames) {
-        this.boardFactory = boardFactory;
-        this.numberOfPlayers = numberOfPlayers;
-        this.playerNames = playerNames;
-    }
+    public abstract B createBoard();
 
-    public abstract BoardGame<P, C, BL, B> build();
+    public abstract BG createBoardGame();
 
 }
+
