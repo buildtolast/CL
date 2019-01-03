@@ -10,9 +10,9 @@ public abstract class BoardGameFactory<C extends BoardConfig,
 
     public abstract B createBoard();
 
-    protected abstract P[] addPlayers();
+    protected abstract P[] createPlayers();
 
-    protected abstract G addGamePlay();
+    protected abstract G createGamePlay();
 
     public abstract Game<G> createGame();
 

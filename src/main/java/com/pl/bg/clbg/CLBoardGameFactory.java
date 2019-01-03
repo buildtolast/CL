@@ -22,7 +22,7 @@ public class CLBoardGameFactory extends BoardGameFactory<CLBoardConfig, CLBlock,
     }
 
     @Override
-    protected CLPlayer[] addPlayers() {
+    protected CLPlayer[] createPlayers() {
         int numberOfPlayers = 2;
         String[] names = new String[]{"Eric", "Paul"};
         CLPlayer[] players = new CLPlayer[numberOfPlayers];
@@ -31,13 +31,13 @@ public class CLBoardGameFactory extends BoardGameFactory<CLBoardConfig, CLBlock,
     }
 
     @Override
-    protected CLGamePlay<CLBoard, CLPlayer> addGamePlay() {
-        return new CLGamePlay<>(createBoard(), addPlayers());
+    protected CLGamePlay<CLBoard, CLPlayer> createGamePlay() {
+        return new CLGamePlay<>(createBoard(), createPlayers());
     }
 
     @Override
     public Game<CLGamePlay> createGame() {
-        return new Game<>(addGamePlay());
+        return new Game<>(createGamePlay());
     }
 
 }

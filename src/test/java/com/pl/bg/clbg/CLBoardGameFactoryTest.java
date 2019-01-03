@@ -11,7 +11,7 @@ public class CLBoardGameFactoryTest {
     @Test
     public void verify_player_names_as_eric_and_paul() {
         CLBoardGameFactory clBoardGameFactory = new CLBoardGameFactory();
-        CLPlayer[] players = clBoardGameFactory.addPlayers();
+        CLPlayer[] players = clBoardGameFactory.createPlayers();
 
         Assert.assertEquals(2, players.length);
         String[] actual = Arrays.stream(players).map(Player::getName).sorted().toArray(String[]::new);
