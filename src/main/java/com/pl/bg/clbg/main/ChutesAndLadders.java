@@ -18,8 +18,8 @@ public class ChutesAndLadders {
 
     static void play() {
         BoardGameFactory boardGameFactory = new CLBoardGameFactory();
-        Game boardGame = boardGameFactory.createGame();
-        boardGame.begin();
+        Game game = boardGameFactory.createGame();
+        game.begin();
     }
 
 }

@@ -3,7 +3,9 @@ package com.pl.bg.clbg;
 import com.pl.bg.GamePlay;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class CLGamePlay<B extends CLBoard, P extends CLPlayer> implements GamePlay {
@@ -42,6 +44,8 @@ public class CLGamePlay<B extends CLBoard, P extends CLPlayer> implements GamePl
     void arrangePlayersInTheOrderOfTurn() {
         for (P eachPlayer : players)
             eachPlayer.setPlayOrder(playNextTurn());
+        Arrays.stream(players).sorted(new CLPlayer.CLPlayerComparator()).collect(Collectors.toList()).toArray(players);
+        log.debug("{} to play first! ", players[0].getName());
     }
 
     private int playNextTurn() {
