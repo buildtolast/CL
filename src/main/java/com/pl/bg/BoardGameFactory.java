@@ -1,16 +1,20 @@
 package com.pl.bg;
 
 public abstract class BoardGameFactory<C extends BoardConfig,
-                                       BL extends Block,
-                                       B extends Board<C, BL>,
+                                       T extends Block,
+                                       B extends Board<C, T>,
                                        P extends Player,
-                                       BG extends BoardGame<P, C, BL, B>> {
+                                       G extends GamePlay> {
 
     public abstract C createBoardConfig();
 
     public abstract B createBoard();
 
-    public abstract BG createBoardGame();
+    protected abstract P[] addPlayers();
+
+    protected abstract G addGamePlay();
+
+    public abstract Game<G> createGame();
 
 }
 
