@@ -4,7 +4,7 @@ public abstract class Block {
 
     protected Integer position;
 
-    protected Integer getPosition() {
+    public Integer getPosition() {
         return position;
     }
 

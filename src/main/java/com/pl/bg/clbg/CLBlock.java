@@ -2,16 +2,16 @@ package com.pl.bg.clbg;
 
 import com.pl.bg.Block;
 
-public class CLBlock extends Block {
+class CLBlock extends Block {
 
     private BlockAction action;
 
-    public CLBlock(Integer position, BlockAction action) {
+    CLBlock(Integer position, BlockAction action) {
         this.position = position;
         this.action = action;
     }
 
-    public BlockAction getAction() {
+    BlockAction getAction() {
         return action;
     }
 

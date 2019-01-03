@@ -21,4 +21,5 @@ public class BlockAction {
     public String type() {
         return actionType.name();
     }
+
 }
