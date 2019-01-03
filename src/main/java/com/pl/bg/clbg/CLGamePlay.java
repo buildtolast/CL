@@ -25,7 +25,7 @@ public class CLGamePlay<B extends CLBoard, P extends CLPlayer> implements GamePl
         int turns = 0;
         while (thereIsNoWinner) {
             for (CLPlayer player : players) {
-                int newPosition = nextValue();
+                int newPosition = playNextTurn();
                 if(!board.positionIsValid(player.getCurrentPosition()+newPosition))
                     continue;
 
@@ -41,10 +41,10 @@ public class CLGamePlay<B extends CLBoard, P extends CLPlayer> implements GamePl
 
     void arrangePlayersInTheOrderOfTurn() {
         for (P eachPlayer : players)
-            eachPlayer.setPlayOrder(nextValue());
+            eachPlayer.setPlayOrder(playNextTurn());
     }
 
-    private int nextValue() {
+    private int playNextTurn() {
         int nextValue = random.nextInt(6);
         while (nextValue == 0)
             nextValue = random.nextInt(6);
