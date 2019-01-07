@@ -1,24 +1,25 @@
 package com.pl.bg.clbg;
 
-public class Action {
+public class BlockAction {
 
-    private ActionType actionType;
+    private BlockActionType actionType;
     private Integer newPosition;
 
-    public Action(Integer newPosition, ActionType actionType) {
+    public BlockAction(Integer newPosition, BlockActionType actionType) {
         this.actionType = actionType;
         this.newPosition = newPosition;
     }
 
-    Integer advanceTo() {
+    Integer advanceToPosition() {
         return newPosition;
     }
 
     boolean isChuteOrLadder(){
-        return actionType != ActionType.NOACTION;
+        return actionType != BlockActionType.NOACTION;
     }
 
     public String type() {
         return actionType.name();
     }
+
 }

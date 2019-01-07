@@ -9,9 +9,9 @@ import java.util.stream.IntStream;
 
 public class CLBoardConfig extends BoardConfig {
 
-    private Map<Integer, Action> actions;
+    private Map<Integer, BlockAction> actions;
 
-    CLBoardConfig(Integer numOfBlocks, Integer[][] chuteBlocksConfig, Integer[][] ladderBlocksConfig) {
+    public CLBoardConfig(Integer numOfBlocks, Integer[][] chuteBlocksConfig, Integer[][] ladderBlocksConfig) {
         super(numOfBlocks);
         this.actions = new HashMap<>();
         chuteBlocks(chuteBlocksConfig);
@@ -19,24 +19,24 @@ public class CLBoardConfig extends BoardConfig {
         blockWithNoAction();
     }
 
-    Map<Integer, Action> getActions() {
+    Map<Integer, BlockAction> getActions() {
         return actions;
     }
 
     private void chuteBlocks(Integer[][] blockPositions) {
-        addActionToBlock(blockPositions, ActionType.CHUTE);
+        addActionToBlock(blockPositions, BlockActionType.CHUTE);
     }
 
     private void ladderBlocks(Integer[][] blockPositions) {
-        addActionToBlock(blockPositions, ActionType.LADDER);
+        addActionToBlock(blockPositions, BlockActionType.LADDER);
     }
 
     private void blockWithNoAction() {
-        IntStream.rangeClosed(1, getNumOfBlocks()).filter(bp -> !this.actions.containsKey(bp)).forEach(bp -> this.actions.put(bp, new Action(bp, ActionType.NOACTION)));
+        IntStream.rangeClosed(1, getNumOfBlocks()).filter(bp -> !this.actions.containsKey(bp)).forEach(bp -> this.actions.put(bp, new BlockAction(bp, BlockActionType.NOACTION)));
     }
 
-    private void addActionToBlock(Integer[][] blockPositions, ActionType actionType) {
-        Arrays.stream(blockPositions).forEach(bp -> this.actions.put(bp[0], new Action(bp[1], actionType)));
+    private void addActionToBlock(Integer[][] blockPositions, BlockActionType actionType) {
+        Arrays.stream(blockPositions).forEach(bp -> this.actions.put(bp[0], new BlockAction(bp[1], actionType)));
     }
 
 }

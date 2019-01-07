@@ -7,12 +7,12 @@ class CLBoard extends Board<CLBoardConfig, CLBlock> {
     private Integer finalBlock;
 
     public CLBoard(CLBoardConfig config) {
-        this.blocks = new CLBlock[config.getNumOfBlocks()+1];
+        super(new CLBlock[config.getNumOfBlocks()+1]);
         config.getActions().forEach((a, b) -> blocks[a] = new CLBlock(a, b));
         this.finalBlock = config.getNumOfBlocks();
     }
 
-    Action at(Integer position) {
+    BlockAction at(Integer position) {
         return blocks[position].getAction();
     }
 
@@ -20,7 +20,7 @@ class CLBoard extends Board<CLBoardConfig, CLBlock> {
         return finalBlock.equals(blockPosition);
     }
 
-    boolean isValid(Integer position) {
+    boolean positionIsValid(Integer position) {
         return finalBlock >= position;
     }
 
