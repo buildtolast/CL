@@ -48,7 +48,7 @@ public class CLGamePlay<B extends CLBoard, P extends CLPlayer> implements GamePl
         log.debug("{} to play first! ", players[0].getName());
     }
 
-    private int playNextTurn() {
+    protected int playNextTurn() {
         int nextValue = random.nextInt(6);
         while (nextValue == 0)
             nextValue = random.nextInt(6);

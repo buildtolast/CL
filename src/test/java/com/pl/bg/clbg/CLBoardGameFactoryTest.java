@@ -10,7 +10,7 @@ public class CLBoardGameFactoryTest {
 
     @Test
     public void verify_player_names_as_eric_and_paul() {
-        CLBoardGameFactory clBoardGameFactory = new CLBoardGameFactory();
+        CLBoardGameFactory clBoardGameFactory = new TwoPlayerBoardGameFactory();
         CLPlayer[] players = clBoardGameFactory.createPlayers();
 
         Assert.assertEquals(2, players.length);
@@ -20,7 +20,7 @@ public class CLBoardGameFactoryTest {
 
     @Test
     public void verify_10_chute_blocks_and_9_ladder_blocks_and_81_noaction_blocks() {
-        CLBoardGameFactory clBoardGameFactory = new CLBoardGameFactory();
+        CLBoardGameFactory clBoardGameFactory = new TwoPlayerBoardGameFactory();
         CLBoardConfig boardConfig = clBoardGameFactory.createBoardConfig();
 
         Assert.assertEquals(19, boardConfig.getActions().values().stream().filter(BlockAction::isChuteOrLadder).count());

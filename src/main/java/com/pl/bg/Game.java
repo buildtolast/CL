@@ -1,5 +1,9 @@
 package com.pl.bg;
 
+/**
+ *  Board Game Factory creates Game using a
+ *  pre-defined or given Game Play.
+ */
 public class Game<G extends GamePlay> {
 
     G gamePlay;

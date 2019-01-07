@@ -5,7 +5,7 @@ import com.pl.bg.Game;
 
 import java.util.stream.IntStream;
 
-public class CLBoardGameFactory extends BoardGameFactory<CLBoardConfig, CLBlock, CLBoard, CLPlayer, CLGamePlay> {
+public abstract  class CLBoardGameFactory extends BoardGameFactory<CLBoardConfig, CLBlock, CLBoard, CLPlayer, CLGamePlay> {
 
     @Override
     public CLBoardConfig createBoardConfig() {
@@ -23,12 +23,14 @@ public class CLBoardGameFactory extends BoardGameFactory<CLBoardConfig, CLBlock,
 
     @Override
     protected CLPlayer[] createPlayers() {
-        int numberOfPlayers = 2;
-        String[] names = new String[]{"Eric", "Paul"};
-        CLPlayer[] players = new CLPlayer[numberOfPlayers];
-        IntStream.range(0, numberOfPlayers).forEach(index -> players[index] = new CLPlayer(names[index]));
+        CLPlayer[] players = new CLPlayer[numberOfPlayers()];
+        IntStream.range(0, numberOfPlayers()).forEach(index -> players[index] = new CLPlayer(playerNames()[index]));
         return players;
     }
+
+    protected abstract int numberOfPlayers();
+
+    protected abstract String[] playerNames();
 
     @Override
     protected CLGamePlay<CLBoard, CLPlayer> createGamePlay() {
